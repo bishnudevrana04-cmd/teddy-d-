@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Teddy Day ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        color: #fff;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 3em;
+        animation: fadeIn 2s ease-in-out;
+        text-shadow: 0 0 20px rgba(255,255,255,0.6);
+    }
+
+    .teddy {
+        font-size: 120px;
+        animation: bounce 2s infinite;
+        cursor: pointer;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        background: #ff4b6e;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .message {
+        display: none;
+        margin-top: 25px;
+        font-size: 1.4em;
+        animation: fadeIn 2s forwards;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+        color: rgba(255, 0, 100, 0.7);
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Teddy Day 💕</h1>
+    <div class="teddy">🧸</div>
+    <button onclick="showMessage()">Click for Surprise 💝</button>
+    <div class="message" id="message">
+        My love ❤️<br><br>
+        This teddy is just a small symbol of how much I care for you.<br>
+        Whenever you miss me, imagine this teddy hugging you tight 🤗<br><br>
+        Happy Teddy Day, my sweetheart 💖
+    </div>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+}
+</script>
+
+</body>
+</html>
